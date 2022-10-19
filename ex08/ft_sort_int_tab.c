@@ -4,7 +4,7 @@ void ft_sort_int_tab(int *tab, int size);
 
 int main(void)
 {
-	int my_array[] = {6, 4, 3, 2, 1, 6, 7, 8};
+	int my_array[] = {3, 1, 2, 4, 9, 5, 7, 9, 3, 4};
 	int array_size;
 	array_size = sizeof(my_array) / sizeof(int);
 	printf("array size: %i\n", array_size);
@@ -18,37 +18,58 @@ void ft_sort_int_tab(int *tab, int size)
 	int a;
 	a = 0;
 	printf("before: ");
-	while(a < size)
+	while(a < size - 1)
 	{
 		printf("%i ",tab[a]);
 		
 		a++;
 	}
-	printf("\n");
+	printf("\n\n\n");
 
 
 	int i = 0;
 	int j = 1;
-	while(i < size)
+	while(i < size - 1)
 	{
-		while(j < size)
+		printf("I LOOP START: %d\n", i);
+		while(j < size - 1 - i)
 		{
-			if(tab[i] > tab[j + i])
+			// printf("Round j: %i\n", j);
+			int k;
+			k =  j + i;
+			if(tab[i] > tab[k])
 			{
-				
+				printf("K LOOP START: %i\n", k);
+				a = 0;
+			
+				while(a < size - 1)
+				{
+					printf("%i ",tab[a]);
+					a++;
+				}
+				printf("\n");
 				int helper;
+
 				helper = tab[i];
-				tab[j] = tab[i];
-				tab[i] = helper;
+				printf("helper: %i, ", helper);
+
+				tab[i] = tab[k];
+				printf("tab[i]: %i, ", tab[i]);
+
+				tab[k] = helper;
+				printf("tab[k]: %i, \n\n", tab[k]);
+				printf("K LOOP END\n\n");
+
 			}
 			j++;
 		}
 		i++;
+		j = 1;
 	}
 
 	a = 0;
 	printf("after: ");
-	while(a < size)
+	while(a < size - 1)
 	{
 		printf("%i ",tab[a]);
 		
